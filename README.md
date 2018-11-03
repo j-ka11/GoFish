@@ -1,2 +1,2 @@
 # GoFish
-Go fish played between two computers
+EE 312 Lab 6
