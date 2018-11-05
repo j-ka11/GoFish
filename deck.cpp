@@ -8,9 +8,13 @@
 using namespace std;
 #include <vector>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 Deck()           // pristine, sorted deck
 {
+  unsigned int timeSeed = ((unsigned) time(0));
+  srand(timeSeed);
     vector<Suits> allSuits;
     allSuits.push_back(spades);
     allSuits.push_back(hearts);
@@ -28,7 +32,13 @@ Deck()           // pristine, sorted deck
 
 void shuffle()
 {
-    DeckofCards
+  for(vector<Suits>::iterator c=allSuits.begin();allSuits.end()!=c;c++)
+  {
+        int numTraverse = (rand() % DeckofCards.size()) + 1;
+        for(vector<Suits>::iterator c=allSuits.begin();;c++)
+        {
+
+  }
 }
 Card dealCard()
 {
