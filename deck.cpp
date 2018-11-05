@@ -32,12 +32,16 @@ Deck()           // pristine, sorted deck
 
 void shuffle()
 {
-  for(vector<Card>::iterator c=DeckofCards.begin();DeckofCard.end()!=c;c++)
+  if(DeckofCards.empty()==false)
   {
-        int numTraverse = (rand() % DeckofCards.size()) + 1;
-        swap(c,DeckofCards.at(numTraverse);
+    for (unsigned i=0; i<myvector.size(); i++)
+    {
+      int numTraverse = (rand() % DeckofCards.size()) + 1;
+      swapping(i,numTraverse);
 
+    }
   }
+
 }
 Card dealCard()
 {
@@ -50,4 +54,11 @@ Card dealCard()
 int  size() const
 {
     return DeckofCards.size();
+}
+
+void swapping(int orig, int trav)
+{
+  Card temp =DeckofCards.at(i);
+  DeckofCards.at(i)=DeckofCards.at(trav);
+  DeckofCards.at(trav)=DeckofCards(temp);
 }
