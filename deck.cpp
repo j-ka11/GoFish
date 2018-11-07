@@ -15,13 +15,13 @@ Deck()           // pristine, sorted deck
 {
   unsigned int timeSeed = ((unsigned) time(0));
   srand(timeSeed);
-    vector<Suits> allSuits;
+    vector<Suit> allSuits;
     allSuits.push_back(spades);
     allSuits.push_back(hearts);
     allSuits.push_back(diamonds);
     allSuits.push_back(clubs);
     vector<Card> DeckofCards;
-    for(vector<Suits>::iterator c=allSuits.begin();allSuits.end()!=c;c++)
+    for(vector<Suit>::iterator c=allSuits.begin();allSuits.end()!=c;c++)
     {
         for(int j=1;j<14;j++)
         {
@@ -34,7 +34,7 @@ void shuffle()
 {
   if(DeckofCards.empty()==false)
   {
-    for (unsigned i=0; i<myvector.size(); i++)
+    for (int i=0; i<DeckofCards.size(); i++)
     {
       int numTraverse = (rand() % DeckofCards.size()) + 1;
       swapping(i,numTraverse);
