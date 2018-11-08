@@ -25,7 +25,7 @@ Card::Card(int rank, Suit s)
 }
 string Card::toString() const
 {
-    string finString= rankString(getRank())+suitString(this->mySuit);///not going to work
+    string finString= rankString(getRank()) + " of " + suitString(this->mySuit) + ",";
     return finString;
 
 }
@@ -86,7 +86,7 @@ string Card::rankString(int r) const
 
 bool Card::operator == (const Card& rhs) const
 {
-    if(((this->myRank)==(rhs.myRank))&&((this->mySuit)==(rhs.mySuit)))
+    if((this->myRank)==(rhs.myRank))
     {
         return true;
     }
@@ -99,7 +99,7 @@ bool Card::operator == (const Card& rhs) const
 
 bool Card::operator != (const Card& rhs) const
 {
-    if(((this->myRank)==(rhs.myRank))&&((this->mySuit)==(rhs.mySuit)))
+    if((this->myRank)==(rhs.myRank))
     {
         return false;
     }

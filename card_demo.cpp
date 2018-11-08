@@ -33,6 +33,8 @@ int main( )
        
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
+    cout<<p1.getName()<<" asks for: "<<p1.chooseCardFromHand();
+
     
     return EXIT_SUCCESS;  
 }

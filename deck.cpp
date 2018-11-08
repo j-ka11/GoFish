@@ -62,6 +62,9 @@ void Deck::swapping(int orig, int trav)
 }
 
 bool Deck::isEmpty(){
+    if(size() == 0){
+        return true;
+    }
     return false;
 }
 

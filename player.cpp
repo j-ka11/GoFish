@@ -16,13 +16,23 @@ void Player::addCard(Card c)
 void Player::bookCards(Card c1, Card c2)
 {
     myBook.push_back(c1);
-    myBook.push_back(c2);
+    removeCardFromHand(c1);
+    removeCardFromHand(c2);
 
 }
 
 bool Player::checkHandForBook(Card &c1, Card &c2)
 {
-
+    bool foundBook = false;
+    for(int i = 0;i < (myHand.size() - 1);i++){
+        for(int j = i + 1;j < myHand.size();j++){
+            if(myHand.at(i) == myHand.at(j)){
+                bookCards(myHand.at(i), myHand.at(j));
+                foundBook = true;
+            }
+        }
+    }
+    return foundBook;
 }
 
 bool Player::rankInHand(Card c) const
@@ -104,17 +114,11 @@ int Player::getBookSize() const
 
 }
 
-bool Player::checkHandForPair(Card &c1, Card &c2)
-{
-
-
-}
-
 bool Player::sameRankInHand(Card c) const
 {
   for(int i=0;i<myHand.size();i++)
   {
-    if(myHand.at(i).getRank()==c.getRank())
+    if(myHand.at(i)==c)
     {
       return true;
     }
