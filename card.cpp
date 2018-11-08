@@ -47,23 +47,27 @@ int  Card::getRank() const
     return myRank;
 }
 
+Card::Suit Card::getSuit() const{
+    return mySuit;
+}
+
 string Card::suitString(Suit s) const
 {
     if(s==spades)
     {
-        return "s";
+        return "Spades";
     }
     else if(s==hearts)
     {
-        return "h";
+        return "Hearts";
     }
     else if(s==clubs)
     {
-        return "c";
+        return "Clubs";
     }
     else if(s==diamonds)
     {
-        return "d";
+        return "Diamonds";
     }
     else
     {
@@ -104,4 +108,8 @@ bool Card::operator != (const Card& rhs) const
         return true;
     }
 
+}
+
+ostream& operator << (ostream& out, const Card& c){
+    cout << c.rankString(c.getRank()) << " of " << c.suitString(c.getSuit()) << endl;
 }

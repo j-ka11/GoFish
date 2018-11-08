@@ -23,7 +23,10 @@ int main( )
     Player p2("Jane");
     
     Deck d;  //create a deck of cards
+    d.printDeck();
     d.shuffle();
+    cout << "\n\nDeck was just shuffled" << endl;
+    d.printDeck();
     
     dealHand(d, p1, numCards);
     dealHand(d, p2, numCards);

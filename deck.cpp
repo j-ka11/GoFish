@@ -10,26 +10,31 @@ using namespace std;
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
 #include "deck.h"
 
 Deck::Deck(){               //pristine, sorted deck
     unsigned int timeSeed = ((unsigned) time(0));
     srand(timeSeed);
+    myIndex = 0;
     Card::Suit suitArr[4] = {Card::spades, Card::hearts, Card::diamonds, Card::clubs};
     for(int i = 0;i < 4;i++){
         for(int j = 0;j < 13;j++){
-            Deck::myCards[j * (i + 1)] = Card(j, suitArr[i]);
+            Deck::myCards[myIndex] = Card(j + 1, suitArr[i]);
+            myIndex++;
         }
     }
+    myIndex--;
 }
 
 void Deck::shuffle()
 {
   if(isEmpty()==false)
   {
-    for (int i=0; i<this->size(); i++)
+    for (int i=0;i < this->size(); i++)
     {
-      int numTraverse = (rand() % this->size()) + 1;
+      int numTraverse = (rand() % this->size());
       swapping(i,numTraverse);
 
     }
@@ -46,7 +51,7 @@ Card Deck::dealCard()
 
 int  Deck::size() const
 {
-    return myIndex;
+    return (myIndex + 1);
 }
 
 void Deck::swapping(int orig, int trav)
@@ -58,4 +63,10 @@ void Deck::swapping(int orig, int trav)
 
 bool Deck::isEmpty(){
     return false;
+}
+
+void Deck::printDeck(){
+    for(int i = 0;i < this->size();i++){
+        cout << "Card number " << (i + 1) << ": " << myCards[i];
+    }
 }
