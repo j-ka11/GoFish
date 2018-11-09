@@ -31,13 +31,16 @@ class Player
     
     void addCard(Card c);  //adds a card to the hand
     void bookCards(Card c1, Card c2);
+    Card getFirstCardInHand();
+    Card getLastCardInHand();
+    void moveCardToBack();
 
     //OPTIONAL
     // comment out if you decide to not use it
     //this function will check a players hand for a pair. 
     //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
 
-    bool checkHandForBook(Card &c1, Card &c2);
+    void checkHandForBook();
 
     //OPTIONAL
     // comment out if you decide to not use it    
@@ -48,8 +51,9 @@ class Player
     //hand so they can say "Do you have a 4?"
     Card chooseCardFromHand() const; 
     
-    //Does the player have the card c in her hand?
-    bool cardInHand(Card c) const; 
+    //Does the player have the rank r in her hand?
+    //Returns the number of cards with that same rank the player has
+    int numRankInHand(int r) const;
     
     //Remove the card c from the hand and return it to the caller
     Card removeCardFromHand(Card c); 

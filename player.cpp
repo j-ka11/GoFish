@@ -16,12 +16,26 @@ void Player::addCard(Card c)
 void Player::bookCards(Card c1, Card c2)
 {
     myBook.push_back(c1);
+    myBook.push_back(c2);
     removeCardFromHand(c1);
     removeCardFromHand(c2);
 
 }
 
-bool Player::checkHandForBook(Card &c1, Card &c2)
+Card Player::getFirstCardInHand() {
+    return myHand.at(0);
+}
+
+Card Player::getLastCardInHand() {
+    return myHand.back();
+}
+
+void Player::moveCardToBack() {
+    myHand.push_back(myHand.at(0));
+    removeCardFromHand(myHand.at(0));
+}
+
+void Player::checkHandForBook()
 {
     bool foundBook = false;
     for(int i = 0;i < (myHand.size() - 1);i++){
@@ -32,7 +46,7 @@ bool Player::checkHandForBook(Card &c1, Card &c2)
             }
         }
     }
-    return foundBook;
+    return ;
 }
 
 bool Player::rankInHand(Card c) const
@@ -54,14 +68,25 @@ Card Player::chooseCardFromHand() const
 
 }
 
+int Player::numRankInHand(int r) const {
+    int counter = 0;
+    for(int i = 0;i<myHand.size();i++){
+        if(myHand.at(i).getRank() == r){
+            counter++;
+        }
+    }
+    return counter;
+}
+
 Card Player::removeCardFromHand(Card c)
 {
   for (int i=0;i<myHand.size();i++)
   {
     if(myHand.at(i)==c)
     {
-      myHand.erase(myHand.begin() + i);
-      return c;
+        Card returnCard = myHand.at(i);
+        myHand.erase(myHand.begin() + i);
+        return returnCard;
     }
 
   }
@@ -88,15 +113,15 @@ string Player::showHand() const
 
 string Player::showBooks() const
 {
-  Card c;
+  Card c1, c2;
   string cardString;
-  string finalString;
-    for(int i=0;i<myBook.size();i++)
+  string finalString="Books: ";
+    for(int i=0;i<(myBook.size() - 1);i = i + 2)
     {
-      c=myBook.at(i);
-      cardString=c.toString();
-      finalString=finalString+" "+cardString;
-
+      c1=myBook.at(i);
+      c2 = myBook.at(i + 1);
+      cardString=c1.toString() + " " + c2.toString() + " "+"\n";
+      finalString = finalString + cardString + " ";
     }
     return finalString;
 
