@@ -17,9 +17,9 @@ void Player::bookCards(Card c1, Card c2)
 {
     myBook.push_back(c1);
     myBook.push_back(c2);
-    removeCardFromHand(c1);
-    removeCardFromHand(c2);
-
+    Card returned1 = removeCardFromHand(c1);
+    Card returned2 = removeCardFromHand(c2);
+    return;
 }
 
 Card Player::getFirstCardInHand() {
@@ -38,11 +38,16 @@ void Player::moveCardToBack() {
 void Player::checkHandForBook()
 {
     bool foundBook = false;
-    for(int i = 0;i < (myHand.size() - 1);i++){
-        for(int j = i + 1;j < myHand.size();j++){
-            if(myHand.at(i) == myHand.at(j)){
-                bookCards(myHand.at(i), myHand.at(j));
-                foundBook = true;
+    if(myHand.size()>1) {
+        for (int i = 0; i < (myHand.size() - 1); i++) {
+            for (int j = i + 1; j < myHand.size(); j++) {
+                if (myHand.at(i) == myHand.at(j)) {
+                    Card firstCard = myHand.at(i);
+                    Card secondCard = myHand.at(j);
+                    bookCards(firstCard, secondCard);
+                    foundBook = true;
+                    return;
+                }
             }
         }
     }
@@ -90,9 +95,6 @@ Card Player::removeCardFromHand(Card c)
     }
 
   }
-  cout<<"did not remove specified card from hand";
-
-
 }
 
 string Player::showHand() const
@@ -115,7 +117,7 @@ string Player::showBooks() const
 {
   Card c1, c2;
   string cardString;
-  string finalString="Books: ";
+  string finalString="Books: \n";
     for(int i=0;i<(myBook.size() - 1);i = i + 2)
     {
       c1=myBook.at(i);

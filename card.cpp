@@ -111,5 +111,6 @@ bool Card::operator != (const Card& rhs) const
 }
 
 ostream& operator << (ostream& out, const Card& c){
-    cout << c.rankString(c.getRank()) << " of " << c.suitString(c.getSuit()) << endl;
+    out << c.rankString(c.getRank()) << " of " << c.suitString(c.getSuit()) << endl;
+    return out;
 }

@@ -68,8 +68,12 @@ bool Deck::isEmpty(){
     return false;
 }
 
-void Deck::printDeck(){
+/*string Deck::printDeck(){
+    string Card;
+    string finalString;
     for(int i = 0;i < this->size();i++){
-        cout << "Card number " << (i + 1) << ": " << myCards[i];
+        Card = "Card number " + to_string(i + 1) + " : " + myCards[i].rankString(myCards[i].getRank()) + " of " + myCards[i].suitString(myCards[i].getSuit()) + "\n";
+        finalString = finalString + Card;
     }
-}
+    return finalString;
+}*/

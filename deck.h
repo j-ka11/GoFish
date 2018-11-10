@@ -34,7 +34,7 @@ class Deck
 
     int  size() const; // # cards left in the deck
 
-    void printDeck();
+    string printDeck();
 
 
   private:
